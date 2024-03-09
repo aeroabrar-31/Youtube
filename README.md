@@ -1,3 +1,37 @@
+## Planning
+
+1. Header
+
+   - Menu Icon
+   - Logo
+   - Search Bar
+   - create video (+)
+   - Notifications idon
+   - Profile avatar
+
+2. Body
+
+   - 3. Sidebar
+   - 4. Main Video Container
+
+3. Sidebar
+
+   - Home
+   - About
+   - Subscriptions
+   - Playlists
+   - etc...
+
+4. Main Video Container
+
+   - feature buttons list (carousel)
+   - Video cards
+
+5. Watch Page
+   - Main Video
+   - Comment Section
+   - Recommendation videos
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
