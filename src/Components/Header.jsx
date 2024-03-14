@@ -8,6 +8,7 @@ import { Avatar, IconButton, Tooltip } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { toggle } from "../utils/appSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,8 +17,12 @@ const Header = () => {
     dispatch(toggle());
   };
 
+  // const navigate = useNavigate();
+
+  const handlHome = () => {};
+
   return (
-    <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col static">
+    <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white">
       <div className="flex col-span-1">
         <Menu
           sx={{
@@ -36,6 +41,7 @@ const Header = () => {
           className="h-5 ml-4 cursor-pointer"
           src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
           alt="youtube-logo"
+          onClick={handlHome}
         />
       </div>
 
