@@ -39,7 +39,7 @@ function timeAgo(date) {
 }
 
 const VideoCard = ({ video }) => {
-  console.log(video);
+  // console.log(video);
   const { snippet, statistics, id } = video;
   const { title, publishedAt, thumbnails, channelTitle, channelId } = snippet;
   const { viewCount } = statistics;
@@ -55,7 +55,7 @@ const VideoCard = ({ video }) => {
       YOUTUBE_CHANNEL_API + channelId + "&key=" + GOOGLE_API_KEY
     );
     const jsondata = await data.json();
-    console.log(jsondata);
+    // console.log(jsondata);
     setChannelLogo(jsondata.items[0].snippet.thumbnails.medium.url);
   };
   const navigate = useNavigate();

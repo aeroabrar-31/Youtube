@@ -9,11 +9,13 @@ export const useVideos = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const jsondata = await data.json();
-    console.log("====================================");
-    console.log(jsondata);
-    //   setVideos(jsondata.items);
+    // console.log("====================================");
+    // console.log(jsondata);
+    // //   setVideos(jsondata.items);
+
+    // console.log("====================================");
+
     dispatch(addVideo(jsondata.items));
-    console.log("====================================");
   };
 
   useEffect(() => {

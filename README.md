@@ -32,6 +32,17 @@
    - Comment Section
    - Recommendation videos
 
+### Debouncing
+
+Debouncing is a technique, which is used during api calls like for suggestions in search box and autocomplete etc.
+
+By debouncing the API calls, we can ensure that the requests are not sent too frequently, reducing unnecessary load on the server and improving performance.
+
+### Higher Order Components (HOC)
+
+A function which receives a component and receives an updated version of that component with some required modifications.
+Ex : Received a videocard and changes it to the Advertisement card like in youtube.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

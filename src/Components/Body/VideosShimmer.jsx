@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, Skeleton } from "@mui/material";
 const VideosShimmer = () => {
   return (
     <div className="flex flex-wrap">
-      {[1, 2, 3, 4, 5, 6, 6, 7, 8, 9].map(() => {
+      {[1, 2, 3, 4, 5, 6, 10, 7, 8, 9].map((ele) => {
         return (
-          <Card sx={{ width: "23%", height: "350px", m: 2 }}>
+          <Card key={ele} sx={{ width: "23%", height: "350px", m: 2 }}>
             {
               <Skeleton
                 sx={{ height: 190 }}
