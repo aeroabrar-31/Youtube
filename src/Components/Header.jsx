@@ -69,7 +69,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="col-span-10 self-center justify-items-center text-center">
+      <div className="col-span-10 ">
         <div className="">
           <input
             type="text"

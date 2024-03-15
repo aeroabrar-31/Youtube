@@ -11,7 +11,7 @@ export const VIDEO_BY_ID_API =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";
 
 export const YOUTUBE_SUGGESTIONS_API =
-  "http://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
+  "https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
 
 export const button_list_data = [
   "All",
