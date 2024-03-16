@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { GOOGLE_API_KEY, YOUTUBE_CHANNEL_API } from "../../utils/constants";
+import {
+  GOOGLE_API_KEY,
+  YOUTUBE_CHANNEL_API,
+  formatViews,
+  timeAgo,
+} from "../../utils/constants";
 import { Tooltip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
