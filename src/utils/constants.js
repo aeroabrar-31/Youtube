@@ -13,6 +13,56 @@ export const VIDEO_BY_ID_API =
 export const YOUTUBE_SUGGESTIONS_API =
   "https://suggestqueries.google.com/complete/search?client=youtube&ds=yt&client=firefox&q=";
 
+export const COMMENTS_THREADS_API =
+  "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&maxResults=100&videoId=";
+
+export function formatViews(number) {
+  if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + "M views";
+  } else if (number >= 1000) {
+    return (number / 1000).toFixed(1) + "K views";
+  } else {
+    return number + " views";
+  }
+}
+
+export function formatLikes(number) {
+  if (number >= 1000000) {
+    return (number / 1000000).toFixed(1) + "M";
+  } else if (number >= 1000) {
+    return (number / 1000).toFixed(1) + "K";
+  } else {
+    return number;
+  }
+}
+
+export function timeAgo(date) {
+  const now = new Date();
+  const timeDiff = now - new Date(date);
+
+  console.log(timeDiff);
+
+  const seconds = Math.floor(timeDiff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) {
+    return `${years} ${years === 1 ? "year" : "years"} ago`;
+  } else if (months > 0) {
+    return `${months} ${months === 1 ? "month" : "months"} ago`;
+  } else if (days > 0) {
+    return `${days} ${days === 1 ? "day" : "days"} ago`;
+  } else if (hours > 0) {
+    return `${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  } else if (minutes > 0) {
+    return `${minutes} ${minutes === 1 ? "minute" : "minutes"} ago`;
+  } else {
+    return "few minutes ago";
+  }
+}
 export const button_list_data = [
   "All",
   "Music",

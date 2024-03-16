@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { closeSideBar } from "../utils/appSlice";
 import { useParams, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY, VIDEO_BY_ID_API } from "../utils/constants";
+import CommentsContainer from "./CommentSection/CommentsContainer";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const Watch = () => {
   }, []);
 
   return (
-    <div className="m-1">
+    <div className=" mx-2 my-1">
       <iframe
         width="1000"
         height="500"
@@ -38,7 +39,8 @@ const Watch = () => {
         }
         title="YouTube video player"
         allowFullScreen
-      ></iframe>
+      />
+      <CommentsContainer video_id={params.get("v")} />
     </div>
   );
 };
