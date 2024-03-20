@@ -55,6 +55,7 @@ const Header = () => {
   const handleFormSubmit = (event) => {
     console.log("click res");
     event.preventDefault();
+    if (searchQuery.length == 0) return;
     navigate("results?search_query=" + searchQuery);
     setFocus(false);
   };

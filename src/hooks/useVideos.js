@@ -9,7 +9,7 @@ export const useVideos = () => {
   const getVideos = async () => {
     const data = await fetch(YOUTUBE_VIDEOS_API);
     const jsondata = await data.json();
-
+    console.log(jsondata);
     dispatch(addVideo(jsondata.items));
   };
 
