@@ -15,6 +15,8 @@ import { YOUTUBE_SUGGESTIONS_API } from "../utils/constants";
 const Header = () => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const handleToggle = () => {
     dispatch(toggle());
   };
@@ -25,7 +27,7 @@ const Header = () => {
   // console.log(searchQuery);
 
   useEffect(() => {
-    console.log(searchQuery);
+    // console.log(searchQuery);
 
     const timer = setTimeout(() => {
       getVideoSuggestions(searchQuery);
@@ -43,7 +45,23 @@ const Header = () => {
     setSuggestions(jsondata[1]);
   };
 
-  const handlHome = () => {};
+  const handleResult = (data) => {
+    console.log("click res");
+    setSearchQuery(data);
+    navigate("results?search_query=" + data);
+    setFocus(false);
+  };
+
+  const handleFormSubmit = (event) => {
+    console.log("click res");
+    event.preventDefault();
+    navigate("results?search_query=" + searchQuery);
+    setFocus(false);
+  };
+
+  const handlHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white">
@@ -71,39 +89,48 @@ const Header = () => {
 
       <div className="col-span-10 ">
         <div className="">
-          <input
-            type="text"
-            className="border-2 border-gray-300 p-1 w-1/2  rounded-l-full"
-            placeholder="Search"
-            value={searchQuery}
-            onFocus={() => setFocus(true)}
-            onBlur={() => setFocus(false)}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-          <button className="border-2  border-gray-300 px-2 bg-slate-300 py-1 rounded-r-full">
-            <Search />
-          </button>
-          <Tooltip title="Search with voice">
-            <Mic
-              sx={{
-                cursor: "pointer",
-                marginLeft: "10px",
-                "&:hover": {
-                  backgroundColor: "rgba(0, 0, 0, 0.1)", // Adjust the background color as needed
-                  borderRadius: "50%", // Set the border-radius to create a circular background
-                  boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
-                },
-              }}
+          <form onSubmit={handleFormSubmit}>
+            <input
+              type="text"
+              className="border-2 border-gray-300 p-1 w-1/2  rounded-l-full"
+              placeholder="Search"
+              value={searchQuery}
+              onFocus={() => setFocus(true)}
+              // onBlur={() => setFocus(false)}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
-          </Tooltip>
+
+            <button
+              type="submit"
+              className="border-2  border-gray-300 px-2 bg-slate-300 py-1 rounded-r-full"
+            >
+              <Search />
+            </button>
+            <Tooltip title="Search with voice">
+              <Mic
+                sx={{
+                  cursor: "pointer",
+                  marginLeft: "10px",
+                  "&:hover": {
+                    backgroundColor: "rgba(0, 0, 0, 0.1)", // Adjust the background color as needed
+                    borderRadius: "50%", // Set the border-radius to create a circular background
+                    boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
+                  },
+                }}
+              />
+            </Tooltip>
+          </form>
         </div>
         {focus && suggestions.length > 0 && (
           <div className="fixed bg-white border-2 border-black shadow-lg rounded-lg">
             <ul>
               {suggestions.map((data) => {
                 return (
-                  <li className="px-2 py-1 hover:bg-gray-200 cursor-pointer">
-                    <Search></Search> {data}
+                  <li
+                    className="px-2 py-1 hover:bg-gray-200 cursor-pointer"
+                    onClick={() => handleResult(data)}
+                  >
+                    <Search /> {data}
                   </li>
                 );
               })}

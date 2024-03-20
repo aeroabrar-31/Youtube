@@ -16,6 +16,9 @@ export const YOUTUBE_SUGGESTIONS_API =
 export const COMMENTS_THREADS_API =
   "https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&order=relevance&maxResults=100&videoId=";
 
+export const SEARCH_VIDEOS_API =
+  "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=";
+
 export function formatViews(number) {
   if (number >= 1000000) {
     return (number / 1000000).toFixed(1) + "M views";
@@ -39,8 +42,6 @@ export function formatLikes(number) {
 export function timeAgo(date) {
   const now = new Date();
   const timeDiff = now - new Date(date);
-
-  console.log(timeDiff);
 
   const seconds = Math.floor(timeDiff / 1000);
   const minutes = Math.floor(seconds / 60);

@@ -22,7 +22,7 @@ const CommentsContainer = ({ video_id }) => {
   console.log(comments);
 
   return (
-    <div>
+    <div className="w-[75%] border-black border-2">
       <h1 className="font-bold">Comments : </h1>
 
       {comments &&

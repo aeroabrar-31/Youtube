@@ -6,10 +6,13 @@ import Header from "../Header";
 
 const Body = () => {
   return (
-    <div className="flex">
-      <SideBar />
-      {/* <MainContainer /> */}
-      <Outlet />
+    <div className="">
+      <Header />
+      <div className="flex">
+        <SideBar />
+        {/* <MainContainer /> */}
+        <Outlet />
+      </div>
     </div>
   );
 };

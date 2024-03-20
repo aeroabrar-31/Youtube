@@ -4,6 +4,8 @@ import { closeSideBar } from "../utils/appSlice";
 import { useParams, useSearchParams } from "react-router-dom";
 import { GOOGLE_API_KEY, VIDEO_BY_ID_API } from "../utils/constants";
 import CommentsContainer from "./CommentSection/CommentsContainer";
+import LiveChat from "./LiveChat";
+import Recommended from "./Recommended";
 
 const Watch = () => {
   const dispatch = useDispatch();
@@ -27,20 +29,25 @@ const Watch = () => {
 
   return (
     <div className=" mx-2 my-1">
-      <iframe
-        width="1000"
-        height="500"
-        src={
-          "https://www.youtube.com/embed/" +
-          params.get("v") +
-          "?playlist=" +
-          params.get("v") +
-          "&rel=0&loop=1&autoplay=1&mute=1"
-        }
-        title="YouTube video player"
-        allowFullScreen
-      />
-      <CommentsContainer video_id={params.get("v")} />
+      <div className="flex w-full">
+        <iframe
+          className=" rounded-xl w-[73%] h-[550px]"
+          src={
+            "https://www.youtube.com/embed/" +
+            params.get("v") +
+            "?playlist=" +
+            params.get("v") +
+            "&rel=0&loop=1&autoplay=1&mute=1"
+          }
+          title="YouTube video player"
+          allowFullScreen
+        />
+        <LiveChat />
+      </div>
+      <div className="flex">
+        <CommentsContainer video_id={params.get("v")} />
+        <Recommended />
+      </div>
     </div>
   );
 };
