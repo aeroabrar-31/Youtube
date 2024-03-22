@@ -12,6 +12,8 @@ import { ColorRing } from "react-loader-spinner";
 const VideoContainer = () => {
   // useVideos();
 
+  // const
+
   const [first, setFirst] = useState(null);
   const fetchData = () => {
     console.log("down !");
@@ -55,10 +57,12 @@ const VideoContainer = () => {
     );
   };
 
-  useEffect(() => {
-    getVideos();
-  }, []);
   const videos = useSelector((store) => store.video.video);
+
+  useEffect(() => {
+    if (videos.length == 0) getVideos();
+  }, []);
+
   if (!videos) return <VideosShimmer />;
   return (
     <div>
@@ -79,7 +83,7 @@ const VideoContainer = () => {
       >
         <div className="flex flex-wrap">
           {videos.map((video, index) => {
-            return video.map((vid, i) => {
+            return video?.map((vid, i) => {
               return <VideoCard key={i} video={vid} />;
             });
           })}

@@ -15,11 +15,11 @@ const CommentsContainer = ({ video_id }) => {
       COMMENTS_THREADS_API + video_id + "&key=" + GOOGLE_API_KEY
     );
     const jsondata = await data.json();
-    console.log(jsondata);
+    // console.log(jsondata);
 
     setComments(jsondata.items);
   };
-  console.log(comments);
+  // console.log(comments);
 
   return (
     <div className="w-[75%] border-black border-2">

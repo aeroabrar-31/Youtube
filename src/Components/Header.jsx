@@ -65,7 +65,7 @@ const Header = () => {
   };
 
   return (
-    <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white">
+    <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white items-center">
       <div className="flex col-span-1">
         <Menu
           sx={{

@@ -5,7 +5,8 @@ import Watch from "./Components/Watch";
 import store from "./utils/store";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainContainer from "./Components/Body/MainContainer";
-import Results from "./Components/Results";
+import Results from "./Components/ResultPage/Results";
+import GoToTop from "./Components/GoToTop";
 
 const appRouter = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ function App() {
   return (
     <Provider store={store}>
       <RouterProvider router={appRouter} />
+      <GoToTop />
     </Provider>
   );
 }
