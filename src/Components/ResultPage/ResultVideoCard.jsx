@@ -36,7 +36,7 @@ const ResultVideoCard = ({ video }) => {
     setChannel(jsondata.items);
   };
 
-  console.log(channel[0].snippet.thumbnails.medium.url);
+  // console.log(channel[0]?.snippet?.thumbnails?.medium?.url);
 
   const getVideoDetails = async () => {
     console.log(id);
@@ -55,21 +55,22 @@ const ResultVideoCard = ({ video }) => {
         <h1>{title}</h1>
 
         {videoDetails && (
-          <h1>
-            {formatViews(videoDetails.statistics.viewCount)} &nbsp;{" "}
+          <h1 className="text-sm font-medium">
+            {formatViews(videoDetails.statistics.viewCount)} &nbsp;&#8226;
+            &nbsp;
             {timeAgo(new Date(videoDetails.snippet.publishedAt))}
           </h1>
         )}
-        <div className="flex items-center">
-          {channel && (
+        {channel && (
+          <div className="flex items-center">
             <img
-              src={channel[0].snippet.thumbnails.medium.url}
+              src={channel[0]?.snippet?.thumbnails?.medium?.url}
               alt="abrar"
               className="w-7 rounded-full mr-2 border-1 "
             />
-          )}
-          <h1>{channelTitle}</h1>
-        </div>
+            <h1>{channelTitle}</h1>
+          </div>
+        )}
         <h1>{description}</h1>
       </div>
     </div>

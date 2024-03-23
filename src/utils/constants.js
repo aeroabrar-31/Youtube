@@ -1,3 +1,14 @@
+import {
+  WhatshotOutlined,
+  ShoppingBagOutlined,
+  MusicNoteOutlined,
+  SportsEsportsOutlined,
+  MovieCreationOutlined,
+  SchoolOutlined,
+  LiveTvOutlined,
+  PodcastsOutlined,
+} from "@mui/icons-material";
+
 export const GOOGLE_API_KEY = "AIzaSyAwnJlP-Olr-RtGMRqlD6JayMczRGHCqMk";
 
 export const YOUTUBE_VIDEOS_API =
@@ -84,17 +95,15 @@ export const button_list_data = [
   "Beauty",
 ];
 
-export const explore_list_data = [
-  "Trending",
-  "Shopping",
-  "Music",
-  "Sports",
-  "News",
-  "Gaming",
-  "Fashion",
-  "Learning",
-  "Movies",
-  "Podcasts",
+export const categories = [
+  { icon: <WhatshotOutlined />, text: "Trending" },
+  { icon: <ShoppingBagOutlined />, text: "Shopping" },
+  { icon: <MusicNoteOutlined />, text: "Music" },
+  { icon: <SportsEsportsOutlined />, text: "Gaming" },
+  { icon: <MovieCreationOutlined />, text: "Movies" },
+  { icon: <SchoolOutlined />, text: "Learning" },
+  { icon: <LiveTvOutlined />, text: "Live" },
+  { icon: <PodcastsOutlined />, text: "Podcasts" },
 ];
 
 const obj = {

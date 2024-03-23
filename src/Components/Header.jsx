@@ -2,7 +2,9 @@ import {
   Menu,
   Mic,
   Notifications,
+  NotificationsOutlined,
   Search,
+  VideoCallOutlined,
   VideoCallRounded,
 } from "@mui/icons-material";
 import { Avatar, IconButton, Tooltip } from "@mui/material";
@@ -142,7 +144,7 @@ const Header = () => {
 
       <div className="flex col-span-1 text-center justify-between">
         <Tooltip title="Create">
-          <VideoCallRounded
+          <VideoCallOutlined
             sx={{
               cursor: "pointer",
               width: "35px",
@@ -156,7 +158,7 @@ const Header = () => {
           />
         </Tooltip>
         <Tooltip title="Notifications">
-          <Notifications
+          <NotificationsOutlined
             sx={{
               cursor: "pointer",
               "&:hover": {
