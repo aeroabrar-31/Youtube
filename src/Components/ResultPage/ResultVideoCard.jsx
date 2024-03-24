@@ -6,6 +6,7 @@ import {
   formatViews,
   timeAgo,
 } from "../../utils/constants";
+import { useNavigate } from "react-router-dom";
 
 const ResultVideoCard = ({ video }) => {
   console.log(video);
@@ -17,6 +18,12 @@ const ResultVideoCard = ({ video }) => {
     getChannelDetails();
     getVideoDetails();
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/watch?v=" + id.videoId);
+  };
 
   const [channel, setChannel] = useState(null);
   const [videoDetails, setVideoDetails] = useState(null);
@@ -50,7 +57,11 @@ const ResultVideoCard = ({ video }) => {
 
   return (
     <div className="m-2 border-2 flex">
-      <img src={url} className="rounded-lg" />
+      <img
+        src={url}
+        className="rounded-lg cursor-pointer"
+        onClick={handleClick}
+      />
       <div className="px-4 py-1">
         <h1>{title}</h1>
 
@@ -61,6 +72,7 @@ const ResultVideoCard = ({ video }) => {
             {timeAgo(new Date(videoDetails.snippet.publishedAt))}
           </h1>
         )}
+        <br />
         {channel && (
           <div className="flex items-center">
             <img

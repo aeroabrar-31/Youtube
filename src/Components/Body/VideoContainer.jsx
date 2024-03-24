@@ -30,10 +30,10 @@ const VideoContainer = () => {
     let url = "";
 
     if (first == null) {
-      url = YOUTUBE_VIDEOS_API + "&key=" + GOOGLE_API_KEY;
+      url = YOUTUBE_VIDEOS_API + "12&key=" + GOOGLE_API_KEY;
     } else {
       url =
-        YOUTUBE_VIDEOS_API + "&pageToken=" + first + "&key=" + GOOGLE_API_KEY;
+        YOUTUBE_VIDEOS_API + "12&pageToken=" + first + "&key=" + GOOGLE_API_KEY;
     }
     console.log(url);
     const data = await fetch(url);

@@ -7,7 +7,6 @@ const MainContainer = () => {
   return (
     <div className="p-4">
       <ButtonsList />
-      <VoiceSearch />
       <VideoContainer />
     </div>
   );

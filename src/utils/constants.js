@@ -12,7 +12,7 @@ import {
 export const GOOGLE_API_KEY = "AIzaSyAwnJlP-Olr-RtGMRqlD6JayMczRGHCqMk";
 
 export const YOUTUBE_VIDEOS_API =
-  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=12&chart=mostPopular&regionCode=IN";
+  "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&maxResults=";
 
 export const YOUTUBE_CHANNEL_API =
   " https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=";

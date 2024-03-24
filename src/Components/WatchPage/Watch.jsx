@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { closeSideBar } from "../utils/appSlice";
+import { closeSideBar } from "../../utils/appSlice";
 import { useParams, useSearchParams } from "react-router-dom";
-import { GOOGLE_API_KEY, VIDEO_BY_ID_API } from "../utils/constants";
-import CommentsContainer from "./CommentSection/CommentsContainer";
+import { GOOGLE_API_KEY, VIDEO_BY_ID_API } from "../../utils/constants";
+import CommentsContainer from "../CommentSection/CommentsContainer";
 import LiveChat from "./LiveChat";
 import Recommended from "./Recommended";
 

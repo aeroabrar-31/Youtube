@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ChatMessage from "./ChatMessage";
+import ChatMessage from "../ChatMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { addMessage } from "../utils/ChatSlice";
-import { generate } from "../utils/helper";
+import { addMessage } from "../../utils/ChatSlice";
+import { generate } from "../../utils/helper";
 import EmojiPicker from "emoji-picker-react";
 import { EmojiEmotions, Send } from "@mui/icons-material";
 import { IconButton } from "@mui/material";

@@ -7,12 +7,23 @@ import {
   VideoCallOutlined,
   VideoCallRounded,
 } from "@mui/icons-material";
-import { Avatar, IconButton, Tooltip } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  IconButton,
+  Modal,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggle } from "../utils/appSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { YOUTUBE_SUGGESTIONS_API } from "../utils/constants";
+import VoiceSearch from "./VoiceSearch";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -66,6 +77,14 @@ const Header = () => {
     navigate("/");
   };
 
+  const handleOpenModal = () => {
+    setOpen(true);
+  };
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white items-center">
       <div className="flex col-span-1">
@@ -111,6 +130,7 @@ const Header = () => {
             </button>
             <Tooltip title="Search with voice">
               <Mic
+                onClick={handleOpenModal}
                 sx={{
                   cursor: "pointer",
                   marginLeft: "10px",
@@ -179,6 +199,12 @@ const Header = () => {
           A
         </Avatar>
       </div>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Speak clearly and loudly</DialogTitle>
+        <DialogContent>
+          <VoiceSearch></VoiceSearch>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

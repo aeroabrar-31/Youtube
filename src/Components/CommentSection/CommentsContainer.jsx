@@ -6,7 +6,7 @@ import Comment from "./Comment";
 const CommentsContainer = ({ video_id }) => {
   useEffect(() => {
     getVideoComments();
-  }, []);
+  }, [video_id]);
 
   const [comments, setComments] = useState(null);
 
@@ -22,7 +22,7 @@ const CommentsContainer = ({ video_id }) => {
   // console.log(comments);
 
   return (
-    <div className="w-[75%] border-black border-2">
+    <div className="w-[68%] border-black border-2">
       <h1 className="font-bold">Comments : </h1>
 
       {comments &&

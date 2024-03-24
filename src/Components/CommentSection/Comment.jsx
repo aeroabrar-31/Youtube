@@ -10,7 +10,7 @@ import React from "react";
 import { formatLikes, formatViews, timeAgo } from "../../utils/constants";
 
 const Comment = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const snippet = data?.snippet;
 
   const authorname = snippet?.topLevelComment?.snippet?.authorDisplayName;
@@ -21,7 +21,7 @@ const Comment = ({ data }) => {
 
   //   const { authorProfileImageUrl } = data;
 
-  console.log(authorname);
+  // console.log(authorname);
   //   console.log(authorimg);
   //   console.log(likes);
   //   console.log(message);
@@ -36,7 +36,7 @@ const Comment = ({ data }) => {
             {authorname} *
             <span className="font-light text-sm"> {timeAgo(time)}</span>
           </h1>
-          <h2 className="my-[2px]">{message}</h2>
+          <h2 className="my-[2px] text-sm">{message}</h2>
           <Tooltip title="like" sx={{ cursor: "pointer" }}>
             <ThumbUpOutlined />
           </Tooltip>
