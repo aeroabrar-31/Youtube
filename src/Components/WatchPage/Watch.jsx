@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeSideBar } from "../../utils/appSlice";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -13,19 +13,22 @@ const Watch = () => {
   const [params, setId] = useSearchParams();
   console.log(params.get("v"));
 
+  const [video, setVideo] = useState(null);
+
   const getVideoData = async () => {
     const data = await fetch(
       VIDEO_BY_ID_API + params.get("v") + "&key=" + GOOGLE_API_KEY
     );
     const jsondata = await data.json();
     console.log(jsondata);
+    setVideo(jsondata.items);
   };
 
   useEffect(() => {
     dispatch(closeSideBar());
     console.log("in watch page closing bar");
-    // getVideoData();
-  }, []);
+    getVideoData();
+  }, [params.get("v")]);
 
   return (
     <div className=" mx-2 my-1">
@@ -45,7 +48,9 @@ const Watch = () => {
         <LiveChat />
       </div>
       <div className="flex">
-        <CommentsContainer video_id={params.get("v")} />
+        {video && (
+          <CommentsContainer video_id={params.get("v")} video={video} />
+        )}
         <Recommended />
       </div>
     </div>

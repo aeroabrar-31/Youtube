@@ -1,4 +1,5 @@
 import {
+  Clear,
   Menu,
   Mic,
   Notifications,
@@ -199,8 +200,17 @@ const Header = () => {
           A
         </Avatar>
       </div>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Speak clearly and loudly</DialogTitle>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        // sx={{ maxWidth: "27%", marginLeft: "36%" }}
+      >
+        <DialogTitle>
+          Speak clearly and loudly{" "}
+          <IconButton aria-label="close" onClick={handleClose}>
+            <Clear sx={{ color: "red" }} />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           <VoiceSearch></VoiceSearch>
         </DialogContent>

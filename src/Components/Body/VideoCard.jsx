@@ -7,6 +7,8 @@ import {
 } from "../../utils/constants";
 import { Tooltip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addChannel } from "../../utils/videoSlice";
 
 const VideoCard = ({ video }) => {
   // console.log(video);
@@ -15,6 +17,7 @@ const VideoCard = ({ video }) => {
   const { viewCount } = statistics;
 
   const [channelLogo, setChannelLogo] = useState(null);
+  const [channel, setChannel] = useState(null);
 
   useEffect(() => {
     getChannelDetails();
@@ -26,11 +29,16 @@ const VideoCard = ({ video }) => {
     );
     const jsondata = await data.json();
     // console.log(jsondata);
+    setChannel(jsondata.items);
     setChannelLogo(jsondata.items[0].snippet.thumbnails.medium.url);
   };
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+
   const handleClick = () => {
+    const tt = dispatch(addChannel(channel));
+    console.log(tt);
     navigate("/watch?v=" + id);
   };
 
