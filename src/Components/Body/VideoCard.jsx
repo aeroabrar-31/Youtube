@@ -42,6 +42,12 @@ const VideoCard = ({ video }) => {
     navigate("/watch?v=" + id);
   };
 
+  const handleNavigateToChannel = () => {
+    const tt = dispatch(addChannel(channel));
+    console.log(tt);
+    navigate("/channel");
+  };
+
   return (
     <div className="p-2 m-2 w-[350px] border-2 shadow-lg text-wrap">
       <img
@@ -56,6 +62,7 @@ const VideoCard = ({ video }) => {
             <img
               src={channelLogo}
               className="w-7 border-2 rounded-full mx-2 mt-1 cursor-pointer"
+              onClick={handleNavigateToChannel}
             />
           </Tooltip>
         </div>

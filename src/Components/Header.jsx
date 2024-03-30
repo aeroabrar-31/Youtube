@@ -82,6 +82,27 @@ const Header = () => {
     setOpen(true);
   };
 
+  // const [focus, setFocus] = useState(false);
+  const [placeholder, setPlaceholder] = useState("");
+  const originalPlaceholder = "Search";
+
+  useEffect(() => {
+    let index = 0;
+    const interval = setInterval(() => {
+      // if (!focus) return;
+      setPlaceholder((prev) => {
+        if (index === originalPlaceholder.length) {
+          clearInterval(interval);
+          return originalPlaceholder;
+        }
+        index++;
+        return originalPlaceholder.substring(0, index) + "_";
+      });
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [focus]);
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -116,7 +137,7 @@ const Header = () => {
             <input
               type="text"
               className="border-2 border-gray-300 p-1 w-1/2  rounded-l-full"
-              placeholder="Search"
+              placeholder={"Search.."}
               value={searchQuery}
               onFocus={() => setFocus(true)}
               // onBlur={() => setFocus(false)}

@@ -10,8 +10,9 @@ const Results = () => {
   const [videos, setVideos] = useState(null);
   console.log(keyword);
   useEffect(() => {
+    setVideos(null);
     getVideos();
-  }, []);
+  }, [keyword]);
 
   const getVideos = async () => {
     const data = await fetch(

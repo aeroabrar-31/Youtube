@@ -8,6 +8,8 @@ class ContentDetector extends React.Component {
     // Regular expression to match hashtags
     var hashtagRegex = /#(\w+)/g;
 
+    var emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,})/g;
+
     // Replace URLs with anchor tags
     text = text.replace(urlRegex, function (url) {
       return `<a href="${url}" class="text-blue-500 hover:underline">${url}</a>`;
@@ -18,6 +20,11 @@ class ContentDetector extends React.Component {
       return `<a href="https://twitter.com/hashtag/${hashtag.substring(
         1
       )}" class="text-blue-500 hover:underline">${hashtag}</a>`;
+    });
+
+    // Replace email addresses with anchor tags
+    text = text.replace(emailRegex, function (email) {
+      return `<a href="mailto:${email}" class="text-blue-500 hover:underline">${email}</a>`;
     });
 
     return text;

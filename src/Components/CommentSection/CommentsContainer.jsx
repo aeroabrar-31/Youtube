@@ -26,7 +26,7 @@ const CommentsContainer = ({ video_id, video }) => {
     video && (
       <div className="w-[68%] border-black border-2">
         <VideoDetails video={video} />
-        <h1 className="font-bold">
+        <h1 className="font-bold p-2 text-lg">
           {video[0]?.statistics?.commentCount} Comments
         </h1>
 

@@ -8,6 +8,7 @@ import MainContainer from "./Components/Body/MainContainer";
 import Results from "./Components/ResultPage/Results";
 import GoToTop from "./Components/GoToTop";
 import Watch from "./Components/WatchPage/Watch";
+import ChannelPage from "./Components/ChannelPage";
 
 const appRouter = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const appRouter = createBrowserRouter([
       {
         path: "results",
         element: <Results />,
+      },
+      {
+        path: "channel",
+        element: <ChannelPage />,
       },
     ],
   },

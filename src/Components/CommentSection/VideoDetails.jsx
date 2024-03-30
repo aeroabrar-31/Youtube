@@ -67,6 +67,18 @@ const VideoDetails = ({ video }) => {
     url = null; // or any other default value you want
   }
 
+  const [showFullDescription, setShowFullDescription] = useState(false);
+  const shortDescriptionLimit = 200; // Set your desired character limit
+
+  const toggleDescription = () => {
+    setShowFullDescription(!showFullDescription);
+  };
+
+  const shortDescription = showFullDescription
+    ? description
+    : description.slice(0, shortDescriptionLimit) +
+      (description.length > shortDescriptionLimit ? "..." : "");
+
   return (
     <div className="m-2">
       <p className="text-lg font-bold">
@@ -117,9 +129,29 @@ const VideoDetails = ({ video }) => {
       <p>
         {formatViews(viewCount)} &nbsp; {timeAgo(publishedAt)}
       </p>
-      <p className="whi whitespace-pre-line bg-gray-300 rounded-lg p-2">
-        <ContentDetector content={description} />
-      </p>
+
+      {!showFullDescription && (
+        <p
+          className={`whitespace-pre-line bg-gray-300 rounded-lg p-2 ${
+            showFullDescription ? "block" : "truncate"
+          }`}
+        >
+          <ContentDetector content={shortDescription} />
+        </p>
+      )}
+      {showFullDescription && (
+        <p className="mt-2 whitespace-pre-line bg-gray-300 rounded-lg p-2">
+          <ContentDetector content={description} />
+        </p>
+      )}
+      <div className="justify-end items-end text-end">
+        <button
+          className="text-blue-500 hover:text-blue-700 cursor-pointer "
+          onClick={toggleDescription}
+        >
+          {showFullDescription ? "Show less" : "Show more"}
+        </button>
+      </div>
     </div>
   );
 };
