@@ -98,28 +98,28 @@ const VideoDetails = ({ video }) => {
           </div>
 
           <div className="ml-5">
-            <button className=" rounded-3xl bg-gray-800 text-white py-2 px-3 text-sm">
+            <button className=" rounded-3xl bg-gray-800 text-white dark:bg-neutral-200 dark:text-neutral-800 py-2 px-3 text-sm">
               Subscribe
             </button>
           </div>
         </div>
         <div className="justify-end flex">
           <div>
-            <button className=" border-r-2 border-black rounded-l-3xl bg-gray-200 py-[6px] px-3 text-sm font-bold">
+            <button className=" border-r-2 border-black rounded-l-3xl bg-gray-200 dark:bg-neutral-700 py-[6px] px-3 text-sm font-bold">
               <ThumbUpAltOutlined /> {formatLikes(likeCount)}
             </button>
-            <button className=" border-black bg-gray-200 py-[6px] rounded-r-3xl px-3 text-sm font-bold">
+            <button className=" border-black bg-gray-200 dark:bg-neutral-700 py-[6px] rounded-r-3xl px-3 text-sm font-bold">
               <ThumbDownOutlined />
             </button>
           </div>
           <div>
-            <button className="py-[6px] mx-5 rounded-3xl px-3 bg-gray-200">
+            <button className="py-[6px] mx-5 rounded-3xl px-3 bg-gray-200 dark:bg-neutral-700">
               <ShareRounded /> Share
             </button>
           </div>
 
           <div>
-            <button className="py-[6px] rounded-3xl px-3 bg-gray-200">
+            <button className="py-[6px] rounded-3xl px-3 bg-gray-200 dark:bg-neutral-700">
               <Download /> Download
             </button>
           </div>
@@ -132,7 +132,7 @@ const VideoDetails = ({ video }) => {
 
       {!showFullDescription && (
         <p
-          className={`whitespace-pre-line bg-gray-300 rounded-lg p-2 ${
+          className={`whitespace-pre-line bg-gray-300 dark:bg-neutral-700 rounded-lg p-2 ${
             showFullDescription ? "block" : "truncate"
           }`}
         >
@@ -140,7 +140,7 @@ const VideoDetails = ({ video }) => {
         </p>
       )}
       {showFullDescription && (
-        <p className="mt-2 whitespace-pre-line bg-gray-300 rounded-lg p-2">
+        <p className="mt-2 whitespace-pre-line bg-gray-300 dark:bg-neutral-700 rounded-lg p-2">
           <ContentDetector content={description} />
         </p>
       )}

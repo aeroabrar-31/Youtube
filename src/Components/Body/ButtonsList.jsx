@@ -11,7 +11,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 2000, min: 1024 },
-    items: 5,
+    items: 10,
     // optional, default to 1.
   },
   tablet: {
@@ -27,14 +27,19 @@ const responsive = {
 };
 const ButtonsList = () => {
   return (
-    <div className="border-3 border-green-600 shadow-lg">
-      {button_list_data.map((data, index) => {
-        return (
-          <button key={index} className="px-5 py-1 rounded-lg bg-gray-200 mx-2">
-            {data}
-          </button>
-        );
-      })}
+    <div className=" shadow-lg dark:shadow-gray-500 py-1 w-full px-2">
+      <Carousel swipeable={false} draggable={false} responsive={responsive}>
+        {button_list_data.map((data, index) => {
+          return (
+            <button
+              key={index}
+              className="px-5 py-1 rounded-lg dark:bg-gray-800 bg-gray-200 mx-2"
+            >
+              {data}
+            </button>
+          );
+        })}
+      </Carousel>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import {
   Clear,
+  DarkModeOutlined,
+  LightModeOutlined,
   Menu,
   Mic,
   Notifications,
@@ -82,6 +84,30 @@ const Header = () => {
     setOpen(true);
   };
 
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if (window.matchMedia?.("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
+
+  console.log(theme);
+
+  const handleDarkLight = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   // const [focus, setFocus] = useState(false);
   const [placeholder, setPlaceholder] = useState("");
   const originalPlaceholder = "Search";
@@ -108,7 +134,7 @@ const Header = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="p-2 shadow-lg mb-2 mt-1 grid grid-flow-col sticky top-0 bg-white items-center">
+    <div className="p-2 shadow-lg mb-2 grid grid-flow-col sticky top-0 bg-white dark:bg-neutral-900   items-center">
       <div className="flex col-span-1">
         <Menu
           sx={{
@@ -124,8 +150,15 @@ const Header = () => {
         />
 
         <img
-          className="h-5 ml-4 cursor-pointer"
-          src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
+          className="h-5 dark:h-7 dark:w-[120px] ml-4 cursor-pointer"
+          // src="https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
+          // src="https://download.logo.wine/logo/YouTube/YouTube-White-Full-Color-Logo.wine.png"
+          // src="https://res.cloudinary.com/dstisc5f4/image/upload/f_auto,q_auto/zq1lhmozbp86cutxkmk4"
+          src={
+            theme === "dark"
+              ? "https://res.cloudinary.com/dstisc5f4/image/upload/f_auto,q_auto/zq1lhmozbp86cutxkmk4"
+              : "https://upload.wikimedia.org/wikipedia/commons/3/34/YouTube_logo_%282017%29.png"
+          }
           alt="youtube-logo"
           onClick={handlHome}
         />
@@ -136,7 +169,7 @@ const Header = () => {
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
-              className="border-2 border-gray-300 p-1 w-1/2  rounded-l-full"
+              className="border-2 border-gray-300 dark:bg-neutral-900 p-1 w-1/2  rounded-l-full"
               placeholder={"Search.."}
               value={searchQuery}
               onFocus={() => setFocus(true)}
@@ -146,7 +179,7 @@ const Header = () => {
 
             <button
               type="submit"
-              className="border-2  border-gray-300 px-2 bg-slate-300 py-1 rounded-r-full"
+              className="border-2  border-gray-300 px-2 bg-slate-300 dark:bg-slate-900 py-1 rounded-r-full"
             >
               <Search />
             </button>
@@ -211,6 +244,35 @@ const Header = () => {
             }}
           />
         </Tooltip>
+        {theme === "dark" ? (
+          <Tooltip title="Light mode">
+            <LightModeOutlined
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "rgba(0, 0, 0, 0.1)", // Adjust the background color as needed
+                  borderRadius: "50%", // Set the border-radius to create a circular background
+                  boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
+                },
+              }}
+              onClick={handleDarkLight}
+            />
+          </Tooltip>
+        ) : (
+          <Tooltip title="Dark mode">
+            <DarkModeOutlined
+              sx={{
+                cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "rgba(0, 0, 0, 0.1)", // Adjust the background color as needed
+                  borderRadius: "50%", // Set the border-radius to create a circular background
+                  boxShadow: "0 0 20px rgba(0, 0, 0, 0.3)",
+                },
+              }}
+              onClick={handleDarkLight}
+            />
+          </Tooltip>
+        )}
         <Avatar
           sx={{
             cursor: "pointer",

@@ -8,12 +8,12 @@ const Body = () => {
   return (
     <div className="">
       <Header />
-      <div className="flex">
+      <div className="flex w-full">
         <SideBar />
         {/* <MainContainer /> */}
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
+    </div>
   );
 };
 

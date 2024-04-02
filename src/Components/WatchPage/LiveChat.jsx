@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../utils/ChatSlice";
 import { generate } from "../../utils/helper";
 import EmojiPicker from "emoji-picker-react";
-import { EmojiEmotions, Send } from "@mui/icons-material";
+import {
+  EmojiEmotions,
+  EmojiEmotionsOutlined,
+  Send,
+} from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 
 const LiveChat = () => {
@@ -36,7 +40,7 @@ const LiveChat = () => {
   const [msgVar, setMsgVar] = useState("");
 
   return (
-    <div className="w-[27%] h-[550px] border-2 p-2 mx-2 bg-gray-100 rounded-lg oerflow-y-scroll">
+    <div className="w-[27%] h-[550px] border-2 p-2 mx-2 bg-gray-100 dark:bg-neutral-700 rounded-lg oerflow-y-scroll">
       <h1 className="font-bold text-red-600">Live Chat</h1>
       <div className="w-full h-[88%]  flex flex-col-reverse overflow-y-scroll">
         {chatMessages &&
@@ -46,20 +50,22 @@ const LiveChat = () => {
       </div>
       <div>
         <form
-          className="flex items-center"
+          className="flex items-center dark:text-white"
           onSubmit={(e) => {
             e.preventDefault();
             dispatch(addMessage({ name: "Abrar", msg: msgVar }));
             setMsgVar("");
           }}
         >
-          <IconButton>
-            <EmojiEmotions
-              onClick={() => {
-                setPicker(!picker);
-              }}
-            ></EmojiEmotions>
-          </IconButton>
+          <div className="dark:text-white">
+            <IconButton>
+              <EmojiEmotionsOutlined
+                onClick={() => {
+                  setPicker(!picker);
+                }}
+              ></EmojiEmotionsOutlined>
+            </IconButton>
+          </div>
           <input
             type="text"
             value={msgVar}
@@ -67,7 +73,7 @@ const LiveChat = () => {
             onChange={(e) => {
               setMsgVar(e.target.value);
             }}
-            className="w-full p-1 mx-1 border-2 rounded border-black focus:border-blue-500"
+            className="w-full p-1 mx-1 border-2 rounded dark:bg-neutral-700 dark:text-white border-black focus:border-blue-500"
           />
           <IconButton>
             <Send />

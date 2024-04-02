@@ -29,15 +29,15 @@ const SideBar = () => {
 
   if (flag) return null;
   return (
-    <div className="p-2 w-40 shadow-lg">
+    <div className="p-2 w-[15%] shadow-lg">
       <ul className="px-1">
-        <li className=" p-2  flex  hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2  flex  hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <Home /> &nbsp;Home
         </li>
-        <li className=" p-2  flex hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2  flex hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <SubscriptionsOutlined /> &nbsp;Subscriptions
         </li>
-        <li className=" p-2 flex  hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2 flex  hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <TheatersOutlined /> &nbsp;Shorts
         </li>
       </ul>
@@ -50,7 +50,7 @@ const SideBar = () => {
           <Link to={"results?search_query=" + category.text}>
             <li
               key={index}
-              className="p-2 flex hover:bg-gray-200 hover:rounded-lg cursor-pointer"
+              className="p-2 flex hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer"
             >
               {category.icon} &nbsp;{category.text}
             </li>
@@ -61,16 +61,16 @@ const SideBar = () => {
       <Divider />
       <br />
       <ul className="px-1">
-        <li className=" p-2  flex  hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2  flex  hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <SettingsOutlined /> &nbsp;Settings
         </li>
-        <li className=" p-2  flex hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2  flex hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <OutlinedFlag /> &nbsp;Report
         </li>
-        <li className=" p-2 flex  hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2 flex  hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <FeedbackOutlined /> &nbsp;Feedback
         </li>
-        <li className=" p-2 flex  hover:bg-gray-200 hover:rounded-lg cursor-pointer">
+        <li className=" p-2 flex  hover:bg-gray-200 dark:hover:bg-gray-700 hover:rounded-lg cursor-pointer">
           <HelpOutlineOutlined /> &nbsp;Help
         </li>
       </ul>

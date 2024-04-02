@@ -28,7 +28,7 @@ const Comment = ({ data }) => {
 
   //   console.log(snippet);
   return (
-    <div className="bg-gray-200 p-1 mx-2 my-1 rounded-md">
+    <div className=" p-1 mx-2 my-1 rounded-md">
       <div className="grid grid-flow-col">
         <img src={authorimg} className="rounded-full col-span-1" />
         <div className="col-span-11 px-2">

@@ -19,7 +19,7 @@ const ChatMessage = ({ name, msg }) => {
   };
 
   return (
-    <div className="grid my-1 grid-flow-col shadow bg-white items-center">
+    <div className="grid my-1 grid-flow-col shadow bg-white dark:bg-neutral-600 items-center">
       <div className="col-span-2 px-1">
         <img
           src={
