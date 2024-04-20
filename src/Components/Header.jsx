@@ -1,5 +1,6 @@
 import {
   Clear,
+  ClearAll,
   DarkModeOutlined,
   LightModeOutlined,
   Menu,
@@ -23,7 +24,7 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { toggle } from "../utils/appSlice";
+import { changeTheme, toggle } from "../utils/appSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { YOUTUBE_SUGGESTIONS_API } from "../utils/constants";
 import VoiceSearch from "./VoiceSearch";
@@ -106,6 +107,7 @@ const Header = () => {
 
   const handleDarkLight = () => {
     setTheme(theme === "dark" ? "light" : "dark");
+    dispatch(changeTheme());
   };
 
   // const [focus, setFocus] = useState(false);
@@ -165,7 +167,7 @@ const Header = () => {
       </div>
 
       <div className="col-span-10 ">
-        <div className="">
+        <div className="relative">
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
@@ -176,6 +178,12 @@ const Header = () => {
               // onBlur={() => setFocus(false)}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+            <button
+              className="    border-2 border-gray-300 dark:bg-neutral-900 p-1  "
+              onClick={() => setSearchQuery("")}
+            >
+              <Clear />
+            </button>
 
             <button
               type="submit"
@@ -200,12 +208,12 @@ const Header = () => {
           </form>
         </div>
         {focus && suggestions.length > 0 && (
-          <div className="fixed bg-white border-2 border-black shadow-lg rounded-lg">
+          <div className="fixed z-10 bg-white dark:bg-neutral-800 dark:border-white border-2 border-black shadow-lg rounded-lg">
             <ul>
               {suggestions.map((data) => {
                 return (
                   <li
-                    className="px-2 py-1 hover:bg-gray-200 cursor-pointer"
+                    className="px-2 py-1 hover:bg-gray-200 dark:hover:bg-neutral-600 dark:text-white cursor-pointer"
                     onClick={() => handleResult(data)}
                   >
                     <Search /> {data}

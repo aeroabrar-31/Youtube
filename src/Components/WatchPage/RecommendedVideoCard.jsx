@@ -15,10 +15,10 @@ const RecommendedVideoCard = ({ video }) => {
   };
 
   return (
-    <div className="flex border-2 m-2">
+    <div className="flex m-2">
       <img
         src={url}
-        className="rounded-lg h-32 w-56 cursor-pointer"
+        className="rounded-lg h-32 w-56 cursor-pointer transform scale-100 transition-transform ease-in-out hover:scale-110"
         onClick={handleClick}
       />
 

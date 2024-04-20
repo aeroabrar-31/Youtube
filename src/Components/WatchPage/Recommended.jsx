@@ -9,7 +9,7 @@ const Recommended = () => {
   const videos = useSelector((store) => store.video.video);
 
   return (
-    <div className="h-full w-[32%] m-2 border-2">
+    <div className="h-full w-[32%] m-2 ">
       <p className="mx-2 font-bold">Recommended : </p>
       {videos.map((video, index) => {
         return video?.map((vid, i) => {

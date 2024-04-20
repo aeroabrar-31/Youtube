@@ -27,13 +27,13 @@ const responsive = {
 };
 const ButtonsList = () => {
   return (
-    <div className=" shadow-lg dark:shadow-gray-500 py-1 w-full px-2">
+    <div className="   py-1 w-full px-2 ">
       <Carousel swipeable={false} draggable={false} responsive={responsive}>
         {button_list_data.map((data, index) => {
           return (
             <button
               key={index}
-              className="px-5 py-1 rounded-lg dark:bg-gray-800 bg-gray-200 mx-2"
+              className="px-5 py-1 rounded-lg -z-10 dark:bg-gray-800 bg-gray-200 mx-2"
             >
               {data}
             </button>

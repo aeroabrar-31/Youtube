@@ -31,7 +31,7 @@ const Results = () => {
 
   return (
     videos && (
-      <div className="border-2 border-red-600 mx-[7%] my-5  w-full">
+      <div className="mx-[7%] my-5  w-full">
         {videos.map((video, index) => {
           return <ResultVideoCard key={index} video={video} />;
         })}

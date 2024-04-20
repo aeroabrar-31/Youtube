@@ -7,7 +7,7 @@ import {
 } from "../../utils/constants";
 import { Tooltip } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addChannel } from "../../utils/videoSlice";
 
 const VideoCard = ({ video }) => {
@@ -22,6 +22,13 @@ const VideoCard = ({ video }) => {
   useEffect(() => {
     getChannelDetails();
   }, []);
+
+  const reduceTitle = (title) => {
+    if (title.length > 60) {
+      title = title.substring(0, 60) + "...";
+    }
+    return title;
+  };
 
   const getChannelDetails = async () => {
     const data = await fetch(
@@ -48,27 +55,41 @@ const VideoCard = ({ video }) => {
     navigate("/channel");
   };
 
+  const [toggle, setToggle] = useState(null);
+
+  const ttt = useSelector((store) => store.app.isToggleOpen);
+  const width = ttt ? 350 : 370;
+  const logosize = ttt ? 7 : 8;
+
+  let imgUrl = thumbnails.medium.url;
+  // if (ttt) {
+  //   imgUrl = thumbnails.medium.url;
+  // } else imgUrl = thumbnails.high.url;
+
+  console.log(ttt);
+
   return (
-    <div className="p-2 m-2 w-[350px] border-2 shadow-lg text-wrap">
+    <div className="p-2 m-2  text-wrap w-[350px]">
       <img
-        src={thumbnails.medium.url}
-        className="rounded-lg cursor-pointer"
+        src={imgUrl}
+        className="rounded-lg cursor-pointer transform scale-100 transition-transform ease-in-out hover:scale-110"
         alt="thmbnail"
         onClick={handleClick}
       />
-      <div className="grid grid-flow-col">
-        <div className="col-span-2">
+      <div className="grid grid-flow-col mt-2">
+        <div className="col-span-2 ">
           <Tooltip title={channelTitle}>
             <img
               src={channelLogo}
-              className="w-7 border-2 rounded-full mx-2 mt-1 cursor-pointer"
+              className={`w-${7} border-2 rounded-full mx-2 mt-1 cursor-pointer`}
               onClick={handleNavigateToChannel}
             />
           </Tooltip>
         </div>
         <ul className="col-span-10 mt-1">
-          <li className="">{title}</li>
-          <li className="">{channelTitle}</li>
+          <h1>{ttt}</h1>
+          <li className="">{reduceTitle(title)}</li>
+          <li className=" font-semibold">{channelTitle}</li>
           <div className="flex mt-2 font-light">
             <li>{formatViews(viewCount)} </li>&nbsp;
             <span>&#8226;</span> &nbsp;

@@ -56,10 +56,10 @@ const ResultVideoCard = ({ video }) => {
   };
 
   return (
-    <div className="m-2 border-2 flex">
+    <div className="mx-2 my-3 flex">
       <img
         src={url}
-        className="rounded-lg cursor-pointer"
+        className="rounded-lg cursor-pointer transform scale-100 transition-transform ease-in-out hover:scale-110"
         onClick={handleClick}
       />
       <div className="px-4 py-1">

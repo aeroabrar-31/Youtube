@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../utils/ChatSlice";
 import { generate } from "../../utils/helper";
 import EmojiPicker from "emoji-picker-react";
+import Theme from "emoji-picker-react";
+
 import {
   EmojiEmotions,
   EmojiEmotionsOutlined,
@@ -81,7 +83,7 @@ const LiveChat = () => {
         </form>
 
         <div className="my-1">
-          {picker && <EmojiPicker onEmojiClick={onEmojiClick} />}
+          {picker && <EmojiPicker theme="dark" onEmojiClick={onEmojiClick} />}
         </div>
       </div>
     </div>
