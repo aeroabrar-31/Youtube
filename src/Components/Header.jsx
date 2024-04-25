@@ -136,7 +136,7 @@ const Header = () => {
   const handleClose = () => setOpen(false);
 
   return (
-    <div className="p-2 shadow-lg mb-2 grid grid-flow-col sticky top-0 bg-white dark:bg-neutral-900   items-center">
+    <div className="p-2 shadow-lg mb-2 z-50 grid grid-flow-col sticky top-0 bg-white dark:bg-neutral-900   items-center">
       <div className="flex col-span-1">
         <Menu
           sx={{

@@ -16,6 +16,8 @@ import { IconButton } from "@mui/material";
 const LiveChat = () => {
   const dispatch = useDispatch();
   const chatMessages = useSelector((store) => store.chat.messages);
+  const theme = useSelector((store) => store.app.theme);
+  let ttt = theme ? "light" : "dark";
 
   useEffect(() => {
     const i = setInterval(() => {
@@ -65,6 +67,7 @@ const LiveChat = () => {
                 onClick={() => {
                   setPicker(!picker);
                 }}
+                className="dark:text-white"
               ></EmojiEmotionsOutlined>
             </IconButton>
           </div>
@@ -78,12 +81,15 @@ const LiveChat = () => {
             className="w-full p-1 mx-1 border-2 rounded dark:bg-neutral-700 dark:text-white border-black focus:border-blue-500"
           />
           <IconButton>
-            <Send />
+            <Send className="dark:text-white" />
           </IconButton>
         </form>
 
-        <div className="my-1">
-          {picker && <EmojiPicker theme="dark" onEmojiClick={onEmojiClick} />}
+        <div className="relative">
+          <div className="my-1 z-50 absolute">
+            {picker && <EmojiPicker theme={ttt} onEmojiClick={onEmojiClick} />}
+          </div>
+          {/* Other content */}
         </div>
       </div>
     </div>
