@@ -84,13 +84,13 @@ const ChannelPage = () => {
         </div>
       </div>
 
-      <h1>Playlists</h1>
+      <h1 className="ml-10 mt-2 text-xl font-bold">Playlists</h1>
 
       {playlists && (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mx-5 justify-between">
           {playlists.map((obj, ind) => {
             return (
-              <div className="m-2 p-2 border w-64 ">
+              <div className="m-2 p-2  w-[22%] ">
                 <div className="relative">
                   <img
                     src={obj?.snippet?.thumbnails.medium.url}
@@ -103,7 +103,7 @@ const ChannelPage = () => {
                     </span>
                   </p>
                 </div>
-                <p>{obj.snippet.title}</p>
+                <p className="px-2">{obj.snippet.title}</p>
                 <p className="mt-1 text-blue-600 text-sm cursor-pointer">
                   View full playlist
                 </p>

@@ -2,22 +2,37 @@ import {
   Clear,
   ClearAll,
   DarkModeOutlined,
+  Feedback,
+  Google,
+  Help,
+  Language,
   LightModeOutlined,
-  Menu,
+  Logout,
   Mic,
   Notifications,
   NotificationsOutlined,
   Search,
+  Settings,
+  ShopTwo,
+  SwitchAccount,
+  Translate,
   VideoCallOutlined,
   VideoCallRounded,
+  YouTube,
 } from "@mui/icons-material";
+import Menuicon from "@mui/icons-material/Menu";
 import {
   Avatar,
   Box,
+  Button,
   Dialog,
+  DialogActions,
   DialogContent,
   DialogTitle,
+  Divider,
   IconButton,
+  MenuItem,
+  Menu,
   Modal,
   Tooltip,
   Typography,
@@ -34,8 +49,28 @@ const Header = () => {
 
   const navigate = useNavigate();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openMenu = Boolean(anchorEl);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
   const handleToggle = () => {
     dispatch(toggle());
+  };
+
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openDialog = () => {
+    setDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+    handleClose();
   };
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -138,7 +173,7 @@ const Header = () => {
   return (
     <div className="p-2 shadow-lg mb-2 z-50 grid grid-flow-col sticky top-0 bg-white dark:bg-neutral-900   items-center">
       <div className="flex col-span-1">
-        <Menu
+        <Menuicon
           sx={{
             cursor: "pointer",
             "&:hover": {
@@ -167,23 +202,17 @@ const Header = () => {
       </div>
 
       <div className="col-span-10 ">
-        <div className="relative">
+        <div className="text-center ">
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
-              className="border-2 border-gray-300 dark:bg-neutral-900 p-1 w-1/2  rounded-l-full"
+              className="border-2 border-gray-300 pl-5   dark:bg-neutral-900 p-1 w-1/2  rounded-l-full"
               placeholder={"Search.."}
               value={searchQuery}
               onFocus={() => setFocus(true)}
               // onBlur={() => setFocus(false)}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button
-              className="    border-2 border-gray-300 dark:bg-neutral-900 p-1  "
-              onClick={() => setSearchQuery("")}
-            >
-              <Clear />
-            </button>
 
             <button
               type="submit"
@@ -208,7 +237,7 @@ const Header = () => {
           </form>
         </div>
         {focus && suggestions.length > 0 && (
-          <div className="fixed z-10 bg-white dark:bg-neutral-800 dark:border-white border-2 border-black shadow-lg rounded-lg">
+          <div className="fixed z-10 bg-white w-1/2 dark:bg-neutral-800 dark:border-white border-2 border-black shadow-lg rounded-lg">
             <ul>
               {suggestions.map((data) => {
                 return (
@@ -287,10 +316,101 @@ const Header = () => {
             width: "30px",
             height: "30px",
           }}
+          aria-controls={openMenu ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={openMenu ? "true" : undefined}
+          onClick={handleMenu}
         >
           A
         </Avatar>
+
+        <Menu
+          id="basic-menu"
+          open={openMenu}
+          onClose={handleCloseMenu}
+          anchorEl={anchorEl}
+          // onClose={handleClose}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "left",
+          }}
+          // sx={{
+          //   backgroundColor: theme === "dark" ? "gray" : "white",
+          // }}
+        >
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Google className="w-4 h-4 mr-2" />
+            <span className="text-sm">Google Account</span>
+          </MenuItem>
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <SwitchAccount className="w-4 h-4 mr-2" />
+            <span className="text-sm">Switch Account</span>
+          </MenuItem>
+          <MenuItem onClick={openDialog} className="flex items-center">
+            <Logout className="w-4 h-4 mr-2" />
+            <span className="text-sm">Sign out</span>
+          </MenuItem>
+
+          <Divider />
+
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <YouTube className="w-4 h-4 mr-2" />
+            <span className="text-sm">Youtube Studio</span>
+          </MenuItem>
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <ShopTwo className="w-4 h-4 mr-2" />
+            <span className="text-sm">Purchases</span>
+          </MenuItem>
+
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Translate className="w-4 h-4 mr-2" />
+            <span className="text-sm">Language</span>
+          </MenuItem>
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Language className="w-4 h-4 mr-2" />
+            <span className="text-sm">Location</span>
+          </MenuItem>
+
+          <Divider />
+
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Settings className="w-4 h-4 mr-2" />
+            <span className="text-sm">Settings</span>
+          </MenuItem>
+
+          <Divider />
+
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Help className="w-4 h-4 mr-2" />
+            <span className="text-sm">Help</span>
+          </MenuItem>
+          <MenuItem onClick={handleCloseMenu} className="flex items-center">
+            <Feedback className="w-4 h-4 mr-2" />
+            <span className="text-sm">Feedback</span>
+          </MenuItem>
+        </Menu>
       </div>
+      <Dialog open={dialogOpen}>
+        <DialogTitle>Do you really want to Logout ?</DialogTitle>
+        <DialogActions>
+          <Button
+            sx={{ textTransform: "none" }}
+            color="primary"
+            variant="contained"
+            onClick={closeDialog}
+          >
+            Cancel
+          </Button>
+          <Button
+            sx={{ textTransform: "none" }}
+            variant="contained"
+            color="error"
+            // onClick={handleLogout}
+          >
+            Logout
+          </Button>
+        </DialogActions>
+      </Dialog>
       <Dialog
         open={open}
         onClose={handleClose}

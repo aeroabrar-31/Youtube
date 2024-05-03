@@ -6,7 +6,10 @@ import {
   formatViews,
   timeAgo,
 } from "../../utils/constants";
+
+import { addChannel } from "../../utils/videoSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const ResultVideoCard = ({ video }) => {
   console.log(video);
@@ -20,6 +23,14 @@ const ResultVideoCard = ({ video }) => {
   }, []);
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
+  const handleNavigateToChannel = () => {
+    const tt = dispatch(addChannel(channel));
+    console.log(tt);
+    navigate("/channel");
+  };
 
   const handleClick = () => {
     navigate("/watch?v=" + id.videoId);
@@ -78,12 +89,13 @@ const ResultVideoCard = ({ video }) => {
             <img
               src={channel[0]?.snippet?.thumbnails?.medium?.url}
               alt="abrar"
-              className="w-7 rounded-full mr-2 border-1 "
+              className="w-7 rounded-full mr-2 border-1 cursor-pointer"
+              onClick={handleNavigateToChannel}
             />
             <h1>{channelTitle}</h1>
           </div>
         )}
-        <h1>{description}</h1>
+        <h1 className=" font-light">{description}</h1>
       </div>
     </div>
   );

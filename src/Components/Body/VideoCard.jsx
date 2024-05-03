@@ -69,10 +69,10 @@ const VideoCard = ({ video }) => {
   console.log(ttt);
 
   return (
-    <div className="p-2 m-2  text-wrap w-[350px]">
+    <div className="p-2 m-2  text-wrap w-[350px] transform scale-100 transition-transform ease-in-out hover:scale-110">
       <img
         src={imgUrl}
-        className="rounded-lg cursor-pointer transform scale-100 transition-transform ease-in-out hover:scale-110"
+        className="rounded-lg cursor-pointer "
         alt="thmbnail"
         onClick={handleClick}
       />

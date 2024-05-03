@@ -81,7 +81,7 @@ const VideoContainer = () => {
           <h3 style={{ textAlign: "center" }}># 8593; Release to refresh</h3>
         }
       >
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap justify-between">
           {videos.map((video, index) => {
             return video?.map((vid, i) => {
               return <VideoCard key={i} video={vid} />;
