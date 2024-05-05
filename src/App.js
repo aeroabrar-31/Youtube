@@ -9,6 +9,10 @@ import Results from "./Components/ResultPage/Results";
 import GoToTop from "./Components/GoToTop";
 import Watch from "./Components/WatchPage/Watch";
 import ChannelPage from "./Components/ChannelPage";
+import "react-toastify/dist/ReactToastify.css";
+
+import Login from "./Components/Login";
+import { ToastContainer } from "react-toastify";
 
 const appRouter = createBrowserRouter([
   {
@@ -32,6 +36,10 @@ const appRouter = createBrowserRouter([
         element: <ChannelPage />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 

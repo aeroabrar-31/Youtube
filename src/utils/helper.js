@@ -178,3 +178,19 @@ var nameList = [
 export function generate() {
   return nameList[Math.floor(Math.random() * nameList.length)];
 }
+
+export function validateEmailPassword(email, password) {
+  const isValidEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(
+    email
+  );
+  const isPasswordValid =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/.test(password);
+
+  if (isValidEmail && isPasswordValid) {
+    return "true";
+  }
+
+  if (!isValidEmail) return "Invalid Email !";
+
+  return "Weak Password";
+}
